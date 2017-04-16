@@ -1,29 +1,20 @@
-# app [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
+Hacky way to send the same media stream to multiple displays in electron.
 
-> My superb app
+Click to show test pattern or local user media in each external display.
 
+###To run:
+```node install```
+```npm run start```
 
-## Dev
-
-```
-$ npm install
-```
-
-### Run
-
-```
-$ npm start
-```
-
-### Build
-
-```
-$ npm run build
-```
-
-Builds the app for macOS, Linux, and Windows, using [electron-packager](https://github.com/electron-userland/electron-packager).
+###Why?
+I couldn't find a way to share MediaStreamObjects between individual Electron BrowserWindows, without writing to a local file.
 
 
-## License
+###How does it work?
+Giant transparent window covers all available connected displays. Content is positioned so that it appears full screen in external monitors. 
+(output.js)
 
-MIT © [<%= name %>](<%= website %>)
+UI windows sends information to displays via IPC. Stream preview window on main screen is positioned relative to UI window (buggy)
+(ui.js)
+
+
